@@ -1,0 +1,49 @@
+<div class="container">
+  <form method="POST" #f="ngForm" (ngSubmit)="updateUser(f)">
+
+    <div class="mb-3">
+      <label class="form-label">Username: </label>
+      <input type="text" class="form-control" [value]="user?.username" [disabled]="true" name="username"
+             [ngModel]="user?.username">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">First name: </label>
+      <input type="text" class="form-control" [value]="user?.firstName" name="firstName" [ngModel]="user?.firstName">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Last name: </label>
+      <input type="text" class="form-control" [value]="user?.lastName" name="lastName" [ngModel]="user?.lastName">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label"> Email: </label>
+      <input type="email" class="form-control" name="email" [ngModel]="user?.email">
+    </div>
+
+    <div class="mb-3">
+
+      <label class="form-label">Phone number</label>
+      <input type="text" class="form-control" name="phoneNumber" [ngModel]="user?.phoneNumber">
+    </div>
+
+    <div class="mb-3 ">
+      <label class="form-label">Department: </label>
+      <select class="form-select" #ref aria-label=".form-select-lg example" (change)="updateDept(ref.value)">
+        @for (department of departments;track department.id) {
+          <option [value]="department.id" [selected]="department.id==selectedDepartment">{{ department.name }}
+          </option>
+        }
+      </select>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center ">
+      <button class="btn btn-primary" type="submit">Save</button>
+      <button class="btn btn-primary bg-danger" type="button" (click)="cancel()">Cancel</button>
+    </div>
+
+
+  </form>
+
+</div>

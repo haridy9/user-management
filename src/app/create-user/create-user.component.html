@@ -1,0 +1,52 @@
+<div class="container">
+  <form method="POST" #f="ngForm" (ngSubmit)="createUser(f)">
+
+
+    <div class="mb-3">
+      <label class="form-label">Username: </label>
+      <input type="text" class="form-control" name="username" ngModel>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">First name: </label>
+      <input type="text" class="form-control" name="firstName" ngModel>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Last name: </label>
+      <input type="text" class="form-control" name="lastName" ngModel>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password: </label>
+      <input type="password" class="form-control" name="password" ngModel>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label"> Email: </label>
+      <input type="email" class="form-control" name="email" ngModel>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Phone number</label>
+      <input type="text" class="form-control" name="phoneNumber" ngModel>
+    </div>
+    <div class="mb-3 ">
+      <label class="">Department: </label>
+      <select class="form-select" #ref aria-label=".form-select-lg example" (change)="updateDepartment(ref.value)">
+
+        @for (department of departments;track department.id;let f=$first) {
+          <option [value]="department.id" [selected]="f">{{ department.name }}</option>
+        }
+
+      </select>
+    </div>
+
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+      <button class="btn btn-primary" type="submit">Create</button>
+      <button class="btn btn-primary bg-danger" type="button" (click)="navigateToHome()">Cancel</button>
+    </div>
+
+  </form>
+
+</div>

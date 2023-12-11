@@ -17,6 +17,9 @@ export class LoginService {
 
 
   get LoggedUsername(): string {
+    if (!this._LoggedUsername && sessionStorage.getItem(LoginService.LOGGED_USERNAME_KEY)) {
+      this._LoggedUsername = sessionStorage.getItem(LoginService.LOGGED_USERNAME_KEY)!;
+    }
     return this._LoggedUsername;
   }
 
